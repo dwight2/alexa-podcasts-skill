@@ -1,0 +1,17 @@
+stacks:
+- content-api-alexa-podcasts-skill
+regions:
+- eu-west-1
+deployments:
+  alexa-podcasts-skill:
+    type: aws-lambda
+    parameters:
+      fileName: artifact.zip
+      bucket: content-api-dist
+      functions:
+        CODE:
+          name: alexa-podcasts-skill-CODE
+          filename: artifact.zip
+        PROD:
+          name: alexa-podcasts-skill-PROD
+          filename: artifact.zip
