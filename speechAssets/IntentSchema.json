@@ -1,0 +1,30 @@
+{
+    "intents": [
+      {
+        "intent":"GetPodcast",
+        "slots": [
+          {
+            "name": "podcast",
+            "type": "PODCAST"
+          }
+        ]
+      },
+      {
+        "intent":"PlayPodcast",
+        "slots": [
+          {
+            "name": "podcast",
+            "type": "PODCAST"
+          }
+        ]
+      },
+      {"intent":"ListPodcasts"},
+      {"intent":"ResumePodcast"},
+      
+      {"intent":"AMAZON.PauseIntent"},
+      {"intent":"AMAZON.ResumeIntent"},
+      {"intent":"AMAZON.YesIntent"},
+      {"intent":"AMAZON.NoIntent"}
+    ]
+}
+
