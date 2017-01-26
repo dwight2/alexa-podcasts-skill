@@ -1,0 +1,43 @@
+{
+  "name": "alexa-podcasts-skill",
+  "projectName": "content-api::alexa-podcasts-skill",
+  "description": "Alexa skills for the Guardian",
+  "repository": "https://github.com/guardian/alexa-podcasts-skill",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "main": "src/index.js",
+  "scripts": {
+    "deploy": "gulp deploy",
+    "test": "gulp compile && tap test"
+  },
+  "devDependencies": {
+    "alexa-sdk": "^1.0.6",
+    "aws-sdk": "^2.8.0",
+    "babel-plugin-external-helpers": "^6.8.0",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-preset-es2015-rollup": "1.1.0",
+    "exec-chainable": "0.0.3",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-yaml": "^1.0.1",
+    "gulp-zip": "^3.2.0",
+    "node-riffraff-artefact": "1.8.1",
+    "rollup": "^0.34.7",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^3.1.0",
+    "rollup-plugin-json": "^2.0.1",
+    "rollup-plugin-node-resolve": "^1.7.1",
+    "moment": "^2.14.1",
+    "tap": "^6.1.1",
+    "standard": "*"
+  },
+  "peerDependencies": {
+    "aws-sdk": "2.x"
+  },
+  "dependencies": {
+    "simple-get-promise": "^1.0.2",
+    "striptags": "^2.1.1",
+    "xml-escape": "^1.1.0"
+  }
+}

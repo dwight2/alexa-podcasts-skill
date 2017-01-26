@@ -1,0 +1,83 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'Alexa podcast skill'
+Parameters:
+    App:
+        Description: Application name
+        Type: String
+        Default: alexa-podcasts-skill
+    Stage:
+        Description: Stage name
+        Type: String
+        AllowedValues:
+            - CODE
+            - PROD
+        Default: CODE
+    DeployBucket:
+        Description: Bucket where RiffRaff uploads artifacts on deploy
+        Type: String
+        Default: 'content-api-dist'
+    DynamodbTable:
+        Description: ARN of dynamodb table used to store user data
+        Type: String
+    CapiKey:
+        Description: CAPI key
+        Type: String
+    AppId:
+        Description: Amazon application ID (for this skill)
+        Type: String
+
+Resources:
+    ExecutionRole:
+        Type: AWS::IAM::Role
+        Properties:
+            Path: /
+            AssumeRolePolicyDocument:
+                Statement:
+                    - Effect: Allow
+                      Principal: { Service: ['lambda.amazonaws.com'] }
+                      Action: [ 'sts:AssumeRole' ]
+            Policies:
+                - PolicyName: logs
+                  PolicyDocument:
+                    Statement:
+                        Effect: Allow
+                        Action:
+                            - logs:CreateLogGroup
+                            - logs:CreateLogStream
+                            - logs:PutLogEvents
+                        Resource: [ 'arn:aws:logs:*:*:*' ]
+                - PolicyName: lambda
+                  PolicyDocument:
+                    Statement:
+                        Effect: Allow
+                        Action: [ 'lambda:InvokeFunction' ]
+                        Resource: [ '*' ]
+                - PolicyName: dynamo
+                  PolicyDocument:
+                    Statement:
+                        Effect: Allow
+                        Action:
+                            - "dynamodb:GetItem"
+                            - "dynamodb:PutItem"
+                            - "dynamodb:UpdateItem"
+                            - "dynamodb:Query"
+                        Resource: !Ref DynamodbTable
+
+    Lambda:
+        Type: AWS::Lambda::Function
+        Properties:
+            FunctionName:
+                !Sub alexa-podcasts-skill-${Stage}
+            Environment:
+                Variables:
+                    APP_ID: !Ref AppId
+                    CAPI_KEY: !Ref CapiKey
+            Code:
+                S3Bucket: !Ref DeployBucket
+                S3Key: !Sub content-api-alexa-podcasts-skill/${Stage}/alexa-podcasts-skill/artifact.zip
+            Description: "Alexa podcasts skill"
+            Handler: index.handler
+            MemorySize: 128
+            Role: !GetAtt ExecutionRole.Arn
+            Runtime: nodejs4.3
+            Timeout: 60

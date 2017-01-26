@@ -1,0 +1,10 @@
+.DS_Store
+*/.DS_Store
+tmp
+node_modules
+conf/config.json
+.idea
+target
+*.iml
+npm-debug.log
+
