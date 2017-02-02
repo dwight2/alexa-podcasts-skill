@@ -72,6 +72,7 @@ Resources:
                 Variables:
                     APP_ID: !Ref AppId
                     CAPI_KEY: !Ref CapiKey
+                    DYNAMO_ARN: !Ref DynamodbTable
             Code:
                 S3Bucket: !Ref DeployBucket
                 S3Key: !Sub content-api-alexa-podcasts-skill/${Stage}/alexa-podcasts-skill/artifact.zip

@@ -1,0 +1,11 @@
+GetPodcast get the latest {podcast}
+GetPodcast latest {podcast}
+GetPodcast {podcast}
+
+PlayPodcast play the latest {podcast}
+PlayPodcast play {podcast}
+
+ListPodcasts list podcasts
+
+ResumePodcast resume podcast
+
