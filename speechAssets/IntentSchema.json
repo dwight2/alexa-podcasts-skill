@@ -20,7 +20,6 @@
       },
       {"intent":"ListPodcasts"},
       {"intent":"ResumePodcast"},
-      
       {"intent":"AMAZON.PauseIntent"},
       {"intent":"AMAZON.ResumeIntent"},
       {"intent":"AMAZON.YesIntent"},

@@ -5,6 +5,7 @@ var Alexa = require('alexa-sdk')
 var states = require('./common/states').states
 var getLatestEpisode = require('./intentHandlers/getLatestEpisode')
 var playLatestEpisode = require('./intentHandlers/playLatestEpisode')
+var resumeEpisode = require('./intentHandlers/resumeEpisode')
 var listPodcasts = require('./intentHandlers/listPodcasts')
 var playDirective = require('./common/directives').playDirective
 
@@ -21,8 +22,8 @@ exports.handler = function (event, context, callback) {
 }
 
 function getLaunchMessage(state) {
-  if (state === "") return `Welcome to Guardian Podcasts., I have regular podcasts about football, politics, science and books. You can also listen to in-depth reporting from the Guardian Long Read series. What would you like to hear?`
-  else return `Welcome back. Is there a particular podcast you want to play, or would you like a list of podcasts?`
+  if (state === "") return `Welcome to Guardian Podcasts. I have regular podcasts about football, politics, science and books. You can also listen to in-depth reporting from the Guardian Long Read series. What would you like to hear?`
+  else return `Welcome back. Tell me the name of the podcast you want to play, or ask for a list of available podcasts.`
 }
 
 var commonHandlers = {
@@ -60,9 +61,7 @@ var commonHandlers = {
     this.emit(':responseReady')
   },
 
-  'AMAZON.ResumeIntent': function() {
-    this.emit(':responseReady')
-  },
+  'AMAZON.ResumeIntent': resumeEpisode,
 
   'Unhandled': function() {
     this.handler.state = states.MAIN

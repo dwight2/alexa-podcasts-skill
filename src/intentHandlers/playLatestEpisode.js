@@ -11,6 +11,7 @@ module.exports = function() {
 
       this.attributes.episodeUrl = episodeDetails.episodeUrl
       this.attributes.episodeTitle = episodeDetails.episodeTitle
+      this.attributes.offset = 0
       this.handler.state = states.MAIN
       this.emit(':saveState', true)
 
