@@ -8,4 +8,4 @@ PlayPodcast play {podcast}
 ListPodcasts list podcasts
 
 ResumePodcast resume podcast
-
+ResumePodcast resume

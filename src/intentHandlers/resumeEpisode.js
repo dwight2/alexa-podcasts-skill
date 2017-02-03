@@ -10,8 +10,9 @@ module.exports = function() {
     var directive = playDirective(this.attributes.episodeUrl, this.attributes.episodeTitle, offset)
     this.handler.state = states.MAIN
     this.emit(':saveState', true)
+
     this.context.succeed(directive)
   } else {
-    this.emit(':ask', `Tell me the name of the podcast you want to play, or ask for a list of available podcasts.`, ``)
+    this.emit(':ask', `Tell me the name of the podcast you want to play, or ask for a list of available podcasts.`, 'How can I help?')
   }
 }

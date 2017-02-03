@@ -7,7 +7,9 @@ var getLatestEpisode = require('./intentHandlers/getLatestEpisode')
 var playLatestEpisode = require('./intentHandlers/playLatestEpisode')
 var resumeEpisode = require('./intentHandlers/resumeEpisode')
 var listPodcasts = require('./intentHandlers/listPodcasts')
-var playDirective = require('./common/directives').playDirective
+var playbackEnded = require('./intentHandlers/playbackEnded')
+var directives = require('./common/directives')
+
 
 exports.handler = function (event, context, callback) {
   console.log(JSON.stringify(event))
@@ -40,25 +42,18 @@ var commonHandlers = {
 
   'ListPodcasts': listPodcasts,
 
-  // TODO - handle these playback intents
-  'AMAZON.StopIntent': function() {
-    this.emit(':tell', 'STOPPED')
-  },
+  'ResumePodcast': resumeEpisode,
 
   'PlaybackStarted': function() {
     this.emit(':responseReady')
   },
 
-  'PlaybackStopped': function() {
-    this.emit(':responseReady')
-  },
+  'PlaybackStopped': playbackEnded,
 
-  'PlaybackFinished': function() {
-    this.emit(':responseReady')
-  },
+  'PlaybackFinished': playbackEnded,
 
   'AMAZON.PauseIntent': function() {
-    this.emit(':responseReady')
+    this.context.succeed(directives.stopPodcastDirective)
   },
 
   'AMAZON.ResumeIntent': resumeEpisode,
@@ -77,7 +72,7 @@ var gotPodcastHandlers = Alexa.CreateStateHandler(states.GOT_PODCAST,
     {
       'AMAZON.YesIntent': function() {
 
-        var directive = playDirective(
+        var directive = directives.playDirective(
           this.attributes.episodeUrl,
           this.attributes.episodeTitle,
           0
