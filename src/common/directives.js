@@ -1,8 +1,4 @@
-
-var cardImages = {
-  'smallImageUrl': 'https://s3.amazonaws.com/alexa-config/images/alexa-small.png',
-  'largeImageUrl': 'https://s3.amazonaws.com/alexa-config/images/alexa-large.png'
-}
+var cardImages = require('./imageUrls').cardImages
 
 exports.playDirective = function(url, title, offset) {
   return {
