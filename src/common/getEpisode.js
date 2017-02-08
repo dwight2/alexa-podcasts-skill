@@ -24,6 +24,14 @@ function getPodcastCapiUrl(podcastName) {
     case 'books':
     case 'books podcast': return 'books/series/books'
 
+    case 'chips with everything': return 'technology/series/chips-with-everything'
+
+    case 'feminism':
+    case 'what would a feminist do': return 'commentisfree/series/what-would-a-feminist-do'
+
+    case 'game of thrones':
+    case 'the citadel': return 'tv-and-radio/series/game-of-thrones-the-citadel-podcast'
+
     default: return null
   }
 }

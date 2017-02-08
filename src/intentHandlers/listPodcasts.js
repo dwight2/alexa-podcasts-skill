@@ -1,21 +1,15 @@
 var cardImages = require('../common/imageUrls').cardImages
 
 var podcastsCard = `You can listen to the following podcasts:
-____________________
-Lifestyle & Culture
-Books podcast, Close Encounters, Film Weekly, Music Weekly, The Citadel
-____________________
-News & opinion
-Behind the lines, Politics for humans, Politics Weekly, What would a feminist do?
-____________________
-Science & technology
-Brain waves, Chips with everything, Science Weekly
-____________________
-Sport
-Football Weekly, Premier League: the view from Australia
-____________________
-Storytelling
-The Long Read, The Story
+* Football Weekly - James Richardson and the pod squad bring you puns and punditry from the world of Football.
+* Film Weekly - our round-up of the week's big and small releases.
+* Politics Weekly - UK and international politics.
+* Books Podcast - our weekly look at the world of books, poetry and great writing.
+* Science Weekly - the best place to learn about the big discoveries and debates in biology, chemisty, physics and sometimes even maths.
+* The Long Read - in-depth reporting, essays and profiles.
+* The Citadel - Spencer Ackerman and Laura Hudson tackle the conflicts, schemes and themes of Game of Thrones.
+* What would a feminist do? - Jessica Valenti brings you interviews, advice and real life stories from the front lines of feminism.
+* Chips with everything - our digital culture podcast.
 `
 
 module.exports = function() {
