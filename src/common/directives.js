@@ -38,3 +38,15 @@ exports.playDirective = function(url, title, offset) {
     }
   }
 }
+
+exports.stopPodcastDirective = {
+  'version': '1.0',
+  'sessionAttributes': {},
+  'response': {
+    'directives': [
+      {
+        'type': 'AudioPlayer.Stop'
+      }
+    ]
+  }
+}

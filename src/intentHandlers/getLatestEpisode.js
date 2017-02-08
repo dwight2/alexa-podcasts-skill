@@ -5,6 +5,7 @@ var states = require('../common/states').states
  * Retrieve the details of the latest episode of the requested podcast, and ask the user if they'd like to hear it.
  */
 module.exports = function() {
+  var that = this
   getEpisode(this.event.request.intent.slots)
     .then((episodeDetails) => {
 
@@ -21,6 +22,6 @@ module.exports = function() {
     })
     .catch(function (message) {
       console.log(`Error getting podcast: ${message}`)
-      this.emit(':tell', message)
+      that.emit(':tell', message)
     })
 }

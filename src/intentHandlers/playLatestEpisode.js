@@ -6,6 +6,7 @@ var states = require('../common/states').states
  * Immediately start playing the latest episode of the requested podcast.
  */
 module.exports = function() {
+  var that = this
   getEpisode(this.event.request.intent.slots)
     .then((episodeDetails) => {
 
@@ -19,7 +20,7 @@ module.exports = function() {
       this.context.succeed(directive)
     })
     .catch(function (message) {
-      console.log(`Error getting podcast: ${message}`)
-      this.emit(':tell', message)
+      console.log(`Error getting podcast: "${message}"`)
+      that.emit(':tell', message)
     })
 }

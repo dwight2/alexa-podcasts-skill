@@ -58,7 +58,7 @@ exports.getEpisode = function(slots) {
           return reject(`Sorry, I can't find anything for ${slots.podcast.value}`)
         })
     } else {
-      console.log(`Couldn't find podcast in slot: ${slots}`)
+      console.log(`Couldn't find podcast in slot: ${JSON.stringify(slots)}`)
       return reject(`Sorry, I can't find anything for that at the moment`)
     }
   })
