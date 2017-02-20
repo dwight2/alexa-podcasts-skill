@@ -6,31 +6,58 @@ var BASE_URL = 'https://content.guardianapis.com/'
 function getPodcastCapiUrl(podcastName) {
   switch (podcastName.toLowerCase()) {
     case 'football':
-    case 'football weekly': return 'football/series/footballweekly'
+    case 'football weekly': return {
+      url: 'football/series/footballweekly',
+      title: 'Football Weekly'
+    }
 
     case 'politics':
-    case 'politics weekly': return 'politics/series/politicsweekly'
+    case 'politics weekly': return {
+      url: 'politics/series/politicsweekly',
+      title: 'Politics Weekly'
+    }
 
     case 'science':
-    case 'science weekly': return 'science/series/science'
+    case 'science weekly': return {
+      url: 'science/series/science',
+      title: 'Science Weekly'
+    }
 
     case 'film':
-    case 'film weekly': return 'film/series/the-dailies-podcast'
+    case 'film weekly': return {
+      url: 'film/series/the-dailies-podcast',
+      title: 'Film Weekly'
+    }
 
     case 'in depth':
     case 'the long read':
-    case 'long read': return 'news/series/the-audio-long-read'
+    case 'long read': return {
+      url: 'news/series/the-audio-long-read',
+      title: 'The Long Read'
+    }
 
     case 'books':
-    case 'books podcast': return 'books/series/books'
+    case 'books podcast': return {
+      url: 'books/series/books',
+      title: 'The Books Podcast'
+    }
 
-    case 'chips with everything': return 'technology/series/chips-with-everything'
+    case 'chips with everything': return {
+      url: 'technology/series/chips-with-everything',
+      title: 'Chips with everything'
+    }
 
     case 'feminism':
-    case 'what would a feminist do': return 'commentisfree/series/what-would-a-feminist-do'
+    case 'what would a feminist do': return {
+      url: 'commentisfree/series/what-would-a-feminist-do',
+      title: 'What would a feminist do'
+    }
 
     case 'game of thrones':
-    case 'the citadel': return 'tv-and-radio/series/game-of-thrones-the-citadel-podcast'
+    case 'the citadel': return {
+      url: 'tv-and-radio/series/game-of-thrones-the-citadel-podcast',
+      title: 'The Citadel'
+    }
 
     default: return null
   }
@@ -43,8 +70,9 @@ function takeUpToHyphen(s) {
 exports.getEpisode = function(slots) {
   return new Promise((resolve, reject) => {
     if (slots && slots.podcast && slots.podcast.value && getPodcastCapiUrl(slots.podcast.value)) {
+      var podcastDetails = getPodcastCapiUrl(slots.podcast.value)
       var capiQuery = BASE_URL
-        + getPodcastCapiUrl(slots.podcast.value)
+        + podcastDetails.url
         + '?tag=type/podcast&type=audio&show-elements=audio'
         + '&api-key=' + process.env.CAPI_KEY
         + '&page-size=1'
@@ -54,7 +82,7 @@ exports.getEpisode = function(slots) {
         .then(seriesJson => {
           var item = seriesJson.response.results[0]
           var result = {
-            podcastTitle: takeUpToHyphen(seriesJson.response.tag.webTitle),
+            podcastTitle: podcastDetails.title,
             episodeUrl: item.elements[0].assets[0].file + '?platform=amazon-echo&skill=podcasts',
             episodeTitle: takeUpToHyphen(item.webTitle)
           }
