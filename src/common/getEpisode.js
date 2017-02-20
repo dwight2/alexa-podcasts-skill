@@ -55,7 +55,7 @@ exports.getEpisode = function(slots) {
           var item = seriesJson.response.results[0]
           var result = {
             podcastTitle: takeUpToHyphen(seriesJson.response.tag.webTitle),
-            episodeUrl: item.elements[0].assets[0].file,
+            episodeUrl: item.elements[0].assets[0].file + '?platform=amazon-echo&skill=podcasts',
             episodeTitle: takeUpToHyphen(item.webTitle)
           }
 
