@@ -25,7 +25,7 @@ exports.handler = function (event, context, callback) {
 
 function getLaunchMessage(state) {
   if (state === "") return `Welcome to Guardian Podcasts. I have regular podcasts about football, politics, science and books. You can also listen to in-depth reporting from the Guardian Long Read series. What would you like to hear?`
-  else return `Welcome back. Tell me the name of the podcast you want to play, or ask for a list of available podcasts.`
+  else return `Welcome back. Tell me the name of the podcast you want to play, or ask for a list of available podcasts. How can I help?`
 }
 
 var commonHandlers = {
@@ -57,6 +57,16 @@ var commonHandlers = {
   },
 
   'AMAZON.ResumeIntent': resumeEpisode,
+
+  'AMAZON.HelpIntent': listPodcasts,
+
+  'AMAZON.CancelIntent': function () {
+    this.emit(':ask', 'OK, how can I help?', 'How can I help?')
+  },
+
+  'AMAZON.StopIntent': function () {
+    this.emit(':tell', 'OK')
+  },
 
   'Unhandled': function() {
     this.handler.state = states.MAIN
