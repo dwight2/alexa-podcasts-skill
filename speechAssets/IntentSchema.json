@@ -23,7 +23,9 @@
       {"intent":"AMAZON.PauseIntent"},
       {"intent":"AMAZON.ResumeIntent"},
       {"intent":"AMAZON.YesIntent"},
-      {"intent":"AMAZON.NoIntent"}
+      {"intent":"AMAZON.NoIntent"},
+      {"intent":"AMAZON.StopIntent"},
+      {"intent":"AMAZON.CancelIntent"},
+      {"intent":"AMAZON.HelpIntent"}
     ]
 }
-
