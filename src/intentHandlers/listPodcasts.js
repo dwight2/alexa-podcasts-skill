@@ -7,7 +7,6 @@ var podcastsCard = `You can listen to the following podcasts:
 * Books Podcast - our weekly look at the world of books, poetry and great writing.
 * Science Weekly - the best place to learn about the big discoveries and debates in biology, chemisty, physics and sometimes even maths.
 * The Long Read - in-depth reporting, essays and profiles.
-* The Citadel - Spencer Ackerman and Laura Hudson tackle the conflicts, schemes and themes of Game of Thrones.
 * What would a feminist do? - Jessica Valenti brings you interviews, advice and real life stories from the front lines of feminism.
 * Chips with everything - our digital culture podcast.
 `
