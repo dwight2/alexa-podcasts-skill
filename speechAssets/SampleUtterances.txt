@@ -1,9 +1,15 @@
 GetPodcast get the latest {podcast}
 GetPodcast latest {podcast}
 GetPodcast {podcast}
+GetPodcast get the new {podcast}
+GetPodcast new {podcast}
 
 PlayPodcast play the latest {podcast}
 PlayPodcast play {podcast}
+PlayPodcast play the new {podcast}
+PlayPodcast listen to {podcast}
+PlayPodcast let me hear {podcast}
+PlayPodcast start {podcast}
 
 ListPodcasts list podcasts
 ListPodcasts what podcasts are available
@@ -14,3 +20,4 @@ ListPodcasts what do you have
 
 ResumePodcast resume podcast
 ResumePodcast resume
+ResumePodcast continue
