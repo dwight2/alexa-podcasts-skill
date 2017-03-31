@@ -17,6 +17,9 @@ ListPodcasts what podcasts do you have
 ListPodcasts what are your podcasts
 ListPodcasts what are the podcasts
 ListPodcasts what do you have
+ListPodcasts a list of podcasts
+ListPodcasts a list of available podcasts
+ListPodcasts list of available podcasts
 
 ResumePodcast resume podcast
 ResumePodcast resume
